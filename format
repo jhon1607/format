@@ -6,6 +6,12 @@
 
 sudo lsblk
 read -p "Ingrese unidad a formatear: " unidad
+case $unidad in 
+    sda)
+        echo "Esto podria dañar tu sistema. \n Rechazado"
+	exit 
+	;;
+esac
 unidad="/dev/$unidad"
 
 sudo umount $unidad
