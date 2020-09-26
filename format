@@ -1,0 +1,62 @@
+#!/bin/bash
+
+#Formateador de memorias USB usando (lsblk, umount y mkfs del sistema)
+#Desarrollador Jhon Jairo Guerrero Sanchez
+#Software libre
+
+sudo lsblk
+read -p "Ingrese unidad a formatear: " unidad
+unidad="/dev/$unidad"
+
+sudo umount $unidad
+
+echo -e  "\nAsigne un nombre a la unidad"
+read -p ": " name
+
+echo -e "\nAcontinuacion elige el tipo de formato\n   1) fat32 \n   2) fat16 \n   3) ext2   \n   4) ext3   \n   5) ext4"
+read -p " :  " tipo
+
+
+case $tipo in
+    1)
+        type="vfat -F 32 -n "
+	    tipo="FAT 32"
+        ;;
+    2)
+        type="vfat -F 16 -n "
+        tipo="FAT 16"
+        ;;
+    3)
+        type="ext2 -L "
+        tipo="EXT2"
+        ;;
+    4)
+        type="ext3 -L "
+        tipo="EXT3"
+        ;;
+    5)
+        type="ext4 -L "
+        tipo="EXT4"
+        ;;
+    *)
+        echo "opcion invalida"
+        exit
+        ;;
+esac
+
+
+name=$(echo $name | tr '[:lower:]' '[:upper:]')
+
+echo -e "Usted va a formatear la unidad $unidad dandole el nombre $name y el tipo $tipo \n "
+
+read -r -p "Estas seguro? [S/n] " response
+
+case "$response" in
+       n | N)
+           exit
+           ;;
+       *)
+           sudo mkfs.$type "$name" $unidad
+           exit
+           ;;
+esac

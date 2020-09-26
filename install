@@ -1,0 +1,8 @@
+Para instalar ejecute en una terminal ubicada en este directorio
+el siguiente comando
+
+sudo chmod +x ./_install
+sudo ./_install 
+
+luego de eso ya podra utilizar format en cualquier lugar 
+de su shell (terminal)
