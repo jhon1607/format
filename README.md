@@ -27,3 +27,7 @@ ejecuta estos comandos
 
 #
 Todo listo ya podemos ejecutar format cada vez que lo necesitemos y formatear nuestras unidades USB con solo 1.2kb de espacio consumido:D
+
+# IMPORTANTE
+> Si eres novato no formatees o elijas la opcion sda ni sda1 etc pues sda es normalmente 
+>tu disco duro o dolido donde corre tu sistema operativo
